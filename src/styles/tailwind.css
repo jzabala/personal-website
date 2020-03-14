@@ -1,0 +1,160 @@
+/* purgecss start ignore */
+@tailwind base;
+
+p,
+pre {
+  @apply mb-3;
+}
+p {
+  @apply leading-relaxed text-lg text-gray-800;
+}
+ol,
+ul {
+  @apply pl-10;
+}
+ol {
+  @apply list-decimal;
+}
+ul {
+  @apply list-disc;
+}
+
+/* Posts styles */
+.post h1,
+.post h2,
+.post h3 {
+  @apply font-sans;
+}
+.post h2 {
+  @apply text-2xl font-bold mt-5 mb-2;
+}
+.post a {
+  @apply soft-underline;
+}
+.post a:hover {
+  @apply hard-underline;
+}
+.post blockquote,
+em {
+  @apply font-light;
+}
+
+.post blockquote {
+  @apply pl-10 italic;
+  background-image: linear-gradient(
+    to right,
+    theme('colors.indigo.600') 1%,
+    transparent 0
+  );
+}
+
+/* purgecss end ignore */
+
+@tailwind components;
+
+@variants hover {
+  .soft-underline {
+    background-image: linear-gradient(
+      180deg,
+      transparent 80%,
+      rgba(90, 103, 216, 0.5) 80%
+    );
+  }
+  .hard-underline {
+    background-image: linear-gradient(
+      180deg,
+      transparent 80%,
+      theme('colors.indigo.600') 80%
+    );
+  }
+}
+
+/*** logo component styles - start ***/
+
+.logo {
+  animation: fill-animation 0.5s ease 2.9s forwards;
+}
+
+.logo > path:nth-child(1) {
+  stroke-dasharray: 49;
+  stroke-dashoffset: 49;
+  animation: line-animation 1s ease forwards;
+}
+
+.logo > path:nth-child(2) {
+  stroke-dasharray: 66;
+  stroke-dashoffset: 66;
+  animation: line-animation 1s ease 0.2s forwards;
+}
+
+.logo > path:nth-child(3) {
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: line-animation 1s ease 0.4s forwards;
+}
+
+.logo > path:nth-child(4) {
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: line-animation 1s ease 0.6s forwards;
+}
+
+.logo > path:nth-child(5) {
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: line-animation 1s ease 0.8s forwards;
+}
+
+.logo > path:nth-child(6) {
+  stroke-dasharray: 45;
+  stroke-dashoffset: 45;
+  animation: line-animation 1s ease 1s forwards;
+}
+
+.logo > path:nth-child(7) {
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: line-animation 1s ease 1.2s forwards;
+}
+
+.logo > path:nth-child(8) {
+  stroke-dasharray: 17;
+  stroke-dashoffset: 17;
+  animation: line-animation 1s ease 1.4s forwards;
+}
+
+.logo > path:nth-child(9) {
+  stroke-dasharray: 61;
+  stroke-dashoffset: 61;
+  animation: line-animation 1s ease 1.6s forwards;
+}
+
+.logo > path:nth-child(10) {
+  stroke-dasharray: 44;
+  stroke-dashoffset: 44;
+  animation: line-animation 1s ease 1.8s forwards;
+}
+
+.logo > path:nth-child(11) {
+  stroke-dasharray: 104;
+  stroke-dashoffset: 104;
+  animation: line-animation 1s ease 2s forwards;
+}
+
+@keyframes line-animation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fill-animation {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: black;
+  }
+}
+
+/*** logo component styles - end ***/
+
+@tailwind utilities;
