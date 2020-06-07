@@ -1,0 +1,132 @@
+---
+title: How to add Font Awesome to a Gatsby site
+author: Johnny Zabala
+description: In this post, we'll add Font Awesome to a Gatsby site and show the use case for gatsby-plugin-fontawesome-css.
+date: 2020-06-07T04:00:00Z
+---
+
+In this post, I'll show you how to add Font Awesome to a Gatsby site.
+
+## Getting Started
+
+Let's start by creating a Gatsby project and adding all the necessary dependencies:
+
+```bash
+mkdir gatsby-fontawesome-example
+cd gatsby-fontawesome-example
+# Create package.json file
+npm init -y
+# Install Gatsby and Font Awesome dependencies
+npm i --save gatsby react react-dom
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/react-fontawesome
+# Create index page
+mkdir -p src/pages && touch src/pages/index.js
+```
+
+> Check the docs for more information about [creating a Gatsby site](https://www.gatsbyjs.org/docs/setting-up-gatsby-without-gatsby-new/) and [using Font Awesome in a React app](https://fontawesome.com/how-to-use/on-the-web/using-with/react).
+
+Add the following scripts to the `package.json`:
+
+```json
+"scripts": {
+  "develop": "gatsby develop",
+  "build": "gatsby build",
+  "serve": "gatsby serve"
+}
+```
+
+And paste the following code in the `src/pages/index.js` file:
+
+```javascript
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCoffee,
+  faAddressBook,
+  faAirFreshener,
+  faAmbulance,
+  faAtom,
+  faBus,
+  faCoins,
+  faDice,
+} from '@fortawesome/free-solid-svg-icons'
+
+const IndexPage = () => (
+  <main
+    style={{
+      maxWidth: '608px',
+      margin: '0 auto',
+    }}
+  >
+    <h1 style={{ textAlign: 'center' }}>
+      Gatsby Font Awesome example
+    </h1>
+    <div>
+      <FontAwesomeIcon icon={faCoffee} size="1x" />
+      <FontAwesomeIcon icon={faAddressBook} size="2x" />
+      <FontAwesomeIcon icon={faAirFreshener} size="3x" />
+      <FontAwesomeIcon icon={faAtom} size="4x" />
+      <FontAwesomeIcon icon={faAmbulance} size="5x" />
+      <FontAwesomeIcon icon={faBus} size="6x" />
+      <FontAwesomeIcon icon={faCoins} size="7x" />
+      <FontAwesomeIcon icon={faDice} size="8x" />
+    </div>
+  </main>
+)
+
+export default IndexPage
+```
+
+Here we're importing the `FontAwesomeIcon` component and all the icons to use (this technique is called [explicit import](https://github.com/FortAwesome/react-fontawesome#explicit-import) but, you can use [build a library](https://github.com/FortAwesome/react-fontawesome#build-a-library-to-reference-icons-throughout-your-app-more-conveniently) if you prefer). We render all the icons and set the `size` property to change their size.
+
+Now, let's run the app to see what we have. In the terminal run: `npm run develop`. The app should be running at [http://localhost:8000](http://localhost:8000).
+
+![demo site](./images/demo-site.png)
+
+Looks good but, there is a problem. To see it, we'll need to run the production version of the app. Stop the app and run the following command: `npm run build && npm run serve`. The app should be running at [http://localhost:9000](http://localhost:9000).
+
+![demo site production version](./images/demo-site-production.gif)
+
+What is happening here 🤔 ? Do right-click on the page and select _View Page Source_ (I am using Chrome). Search for the `class` attribute of the `svg` tags. You'll see there are a bunch of classes. Now, go to the `header` tag and try to find a `style` tag. Because Font Awesome inserts its styles when the _JavaScript_ code runs, there isn't one. And because of it, when you load the page, for a split second, the icons are there without styles.
+
+Solving this issue is not difficult. One solution could be to disable the [auto CSS insertion](https://fontawesome.com/how-to-use/javascript-api/setup/configuration#autoaddcss) and setting the styles for the icons manually using the props `className` and `style`.
+
+```javascript
+import { config } from '@fortawesome/fontawesome-svg-core'
+// Disable the auto CSS insertion
+config.autoAddCss = false
+
+//...
+
+<FontAwesomeIcon icon={faCoffee}
+  className="YOUR-CLASSES"
+  style={{
+    // YOUR STYLES
+  }}
+/>
+```
+
+Another solution could be to insert the styles at compile time using some of the [Gatsby Server Rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/). And even though doing this wouldn't be hard, we don't have to. There is already a plugin that does it: [gatsby-plugin-fontawesome-css](https://github.com/jzabala/gatsby-plugin-fontawesome-css) (I am the author of the plugin).
+
+To use it, we only need to install the plugin and add it to `gatsby-config.js`.
+
+```bash
+# Install the plugin
+npm install --save gatsby-plugin-fontawesome-css
+# Create a file named gatsby-config.js at the root folder
+touch gatsby-config.js
+```
+
+Open `gatsby-config.js` and paste:
+
+```javascript
+module.exports = {
+  plugins: [`gatsby-plugin-fontawesome-css`],
+}
+```
+
+> Example project [repo](https://github.com/jzabala/gatsby-plugin-fontawesome-css/tree/master/example).
+
+And that's all. Now the app works as expected in development and production mode. Enjoy!
