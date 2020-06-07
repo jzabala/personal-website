@@ -16,28 +16,30 @@ const IndexPage = ({ data }) => {
             __html: messages['index.description1'],
           }}
         ></p>
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col sm:flex-row sm:justify-center">
           <p
             className="mb-0"
             dangerouslySetInnerHTML={{
               __html: messages['index.description2'],
             }}
           ></p>
-          <Icon
-            aria-label="javascript logo"
-            className="ml-2"
-            icon={['fab', 'js-square']}
-          />
-          <Icon
-            aria-label="react logo"
-            className="mx-2"
-            icon={['fab', 'react']}
-          />
-          <Icon
-            aria-label="nodejs logo"
-            className="w-8"
-            icon={['fab', 'node']}
-          />
+          <div className="sm:flex sm:items-center">
+            <Icon
+              aria-label="javascript logo"
+              className="ml-2"
+              icon={['fab', 'js-square']}
+            />
+            <Icon
+              aria-label="react logo"
+              className="mx-2"
+              icon={['fab', 'react']}
+            />
+            <Icon
+              aria-label="nodejs logo"
+              className="w-8"
+              icon={['fab', 'node']}
+            />
+          </div>
         </div>
       </section>
       <section className="text-center">

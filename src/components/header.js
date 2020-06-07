@@ -16,7 +16,7 @@ const Header = () => {
   const { messages } = useI18n()
 
   return (
-    <header className="max-w-3xl mb-2 mx-auto px-3 py-4 text-right flex flex-col items-center justify-between sm:flex-row">
+    <header className="max-w-4xl mb-2 mx-auto px-3 py-4 text-right flex flex-col items-center justify-between sm:flex-row">
       <Link to="/">
         <Logo className="mb-5 sm:mb-0" />
       </Link>
