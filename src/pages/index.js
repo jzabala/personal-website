@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
   const { messages } = useI18n()
   return (
     <>
-      <SEO />
+      <SEO description={messages['index.metaDescription']} />
       <section className="mb-8 text-center">
         <p
           dangerouslySetInnerHTML={{

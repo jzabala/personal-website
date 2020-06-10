@@ -7,7 +7,6 @@ import useI18n from '../hooks/use-i18n'
 function SEO({ description, meta, title }) {
   const site = useSiteMetadata()
   const { langKey } = useI18n()
-  const metaDescription = description || site.description
 
   return (
     <Helmet
@@ -19,7 +18,7 @@ function SEO({ description, meta, title }) {
       meta={[
         {
           name: 'description',
-          content: metaDescription,
+          content: description,
         },
         {
           property: 'og:title',
@@ -27,7 +26,7 @@ function SEO({ description, meta, title }) {
         },
         {
           property: 'og:description',
-          content: metaDescription,
+          content: description,
         },
         {
           property: 'og:type',
@@ -47,7 +46,7 @@ function SEO({ description, meta, title }) {
         },
         {
           name: 'twitter:description',
-          content: metaDescription,
+          content: description,
         },
       ].concat(meta)}
     />
@@ -56,11 +55,10 @@ function SEO({ description, meta, title }) {
 
 SEO.defaultProps = {
   meta: [],
-  description: '',
 }
 
 SEO.propTypes = {
-  description: PropTypes.string,
+  description: PropTypes.string.isRequired,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
 }

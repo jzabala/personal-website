@@ -1,5 +1,6 @@
 {
   "en": {
+    "index.metaDescription": "Johnny Zabala personal website",
     "index.description1": "Hi <span role=\"img\" aria-label=\"Waving hand emoji\"> 👋🏼 </span>, my name is Johnny Zabala. I'm a Software Engineer from the Dominican Republic <span role=\"img\" aria-label=\"Dominican Republic flag\">🇩🇴</span>.",
     "index.description2": "I specialize in web development:",
     "index.blogPostsTitle": "Blob Posts",
@@ -9,6 +10,7 @@
     }
   },
   "es": {
+    "index.metaDescription": "Sitio web personal de Johnny Zabala",
     "index.description1": "Hola <span role=\"img\" aria-label=\"Mano saludando emoji\"> 👋🏼 </span>, mi nombre es Johnny Zabala. Soy un Ingeniero de Software de la República Dominicana <span role=\"img\" aria-label=\"Bandera de la República Dominicana\">🇩🇴</span>.",
     "index.description2": "Me especializo en el desarrollo web:",
     "index.blogPostsTitle": "Artículos",
