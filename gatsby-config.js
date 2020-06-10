@@ -19,9 +19,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        defaultLayout: {
-          default: require.resolve('./src/components/layout.js'),
-        },
         gatsbyRemarkPlugins: [
           'gatsby-remark-vscode',
           {
